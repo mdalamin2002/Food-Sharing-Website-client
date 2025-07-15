@@ -1,7 +1,9 @@
+import axios from "axios";
 import { createBrowserRouter } from "react-router";
 import RootLayout from "../layouts/RootLayout";
 import AddFood from "../pages/AddFood";
 import AvailableFoods from "../pages/AvailableFoods";
+import DetailsPage from "../pages/DetailsPage";
 import Error from "../pages/Error";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
@@ -24,6 +26,16 @@ const mainRoutes = createBrowserRouter([
       {
         path: "/available-foods",
         element: <AvailableFoods></AvailableFoods>,
+      },
+      {
+        path: "/details/:foodId",
+        element: <DetailsPage></DetailsPage>,
+        loader: async ({ params }) => {
+           const {data} = await axios.get(`http://localhost:5000/details/${params.foodId}`);
+        return data
+        }
+         
+        
       },
       
       {

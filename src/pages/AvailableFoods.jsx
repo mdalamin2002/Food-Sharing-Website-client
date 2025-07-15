@@ -66,7 +66,7 @@ const AvailableFoods = () => {
                   </span>
                 </p>
 
-                <Link to={`/food/${food._id}`}>
+                <Link to={`/details/${food._id}`}>
                   <button className="mt-4 w-full btn btn-success btn-sm rounded-full">
                     View Details
                   </button>
