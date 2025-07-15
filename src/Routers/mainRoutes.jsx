@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router";
 import RootLayout from "../layouts/RootLayout";
+import AddFood from "../pages/AddFood";
 import Error from "../pages/Error";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
@@ -15,6 +16,11 @@ const mainRoutes = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
       },
+      {
+        path: "/add-food",
+        element: <AddFood></AddFood>,
+      },
+      
       {
         path: "login",
         element: <Login></Login>,

@@ -15,8 +15,8 @@ const Header = () => {
     },
 
     {
-      name: "Link",
-      path: "/",
+      name: "Add Food",
+      path: "/add-food",
     },
   ];
   return (
@@ -31,7 +31,7 @@ const Header = () => {
       <div className="w-11/12 mx-auto py-5 flex justify-between items-center relative">
         <Link to="/" className="logo">
           <span className="text-xl font-bold text-stone-700">
-            Auth 🍳 Template
+           Food Sharing
           </span>
         </Link>
 

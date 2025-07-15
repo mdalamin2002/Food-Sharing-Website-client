@@ -50,12 +50,17 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log("🚀 ~ unsubscribe ~ currentUser:", currentUser)
       setUser(currentUser);
-      
-      axios.get("http://localhost:5000", {
+
+      if(currentUser){
+          
+      axios.get("http://localhost:5000/", {
         headers: {
           Authorization: `Bearer ${currentUser.accessToken}`
         }
       })
+      }
+    
+      
 
       setLoading(false);
     });
