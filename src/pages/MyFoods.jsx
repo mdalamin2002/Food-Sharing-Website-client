@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router";
 import Swal from "sweetalert2";
 import { AuthContext } from "../providers/AuthProvider";
 
@@ -77,9 +78,11 @@ const MyFoods = () => {
                   </td>
                   <td className="capitalize">{food.status}</td>
                   <td className="space-x-2">
-                    <button className="btn btn-sm btn-info rounded-md">
+
+                    <Link to={`/update-food/${food._id}`} className="btn btn-sm btn-info rounded-md">
                       Update
-                    </button>
+                    </Link>
+
                     <button onClick={() => handleDeleteFood(food._id)} className="btn btn-sm btn-error rounded-md">
                       Delete
                     </button>

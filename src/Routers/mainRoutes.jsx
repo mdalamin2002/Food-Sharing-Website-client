@@ -9,6 +9,7 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import MyFoods from "../pages/MyFoods";
 import Register from "../pages/Register";
+import UpdateFood from "../pages/UpdateFood";
 
 const mainRoutes = createBrowserRouter([
   {
@@ -31,6 +32,16 @@ const mainRoutes = createBrowserRouter([
       {
         path: "/my-foods",
         element: <MyFoods></MyFoods>,
+      },
+      {
+        path: "/update-food/:id",
+        element: <UpdateFood></UpdateFood>,
+          loader: async ({ params }) => {
+           const {data} = await axios.get(`http://localhost:5000/details/${params.id}`);
+        return data
+        }
+        
+          
       },
       {
         path: "/details/:foodId",
