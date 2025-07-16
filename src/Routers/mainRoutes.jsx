@@ -7,9 +7,11 @@ import DetailsPage from "../pages/DetailsPage";
 import Error from "../pages/Error";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
+import MyFoodRequest from "../pages/MyFoodRequest";
 import MyFoods from "../pages/MyFoods";
 import Register from "../pages/Register";
 import UpdateFood from "../pages/UpdateFood";
+import PrivateRoute from "./PrivateRoute";
 
 const mainRoutes = createBrowserRouter([
   {
@@ -23,7 +25,9 @@ const mainRoutes = createBrowserRouter([
       },
       {
         path: "/add-food",
-        element: <AddFood></AddFood>,
+        element: <PrivateRoute> <AddFood></AddFood> </PrivateRoute>
+        
+        ,
       },
       {
         path: "/available-foods",
@@ -31,8 +35,22 @@ const mainRoutes = createBrowserRouter([
       },
       {
         path: "/my-foods",
-        element: <MyFoods></MyFoods>,
+        element: 
+        <PrivateRoute> <MyFoods></MyFoods> </PrivateRoute>
+        ,
       },
+      {
+       path: "/request",
+        element: <PrivateRoute>
+          <MyFoodRequest></MyFoodRequest>
+
+        </PrivateRoute>
+        
+        ,
+       
+  },
+        
+      
       {
         path: "/update-food/:id",
         element: <UpdateFood></UpdateFood>,

@@ -1,8 +1,29 @@
-import { useLoaderData } from "react-router";
+import axios from "axios";
+import { useContext } from "react";
+import { useLoaderData, useNavigate } from "react-router";
+import { AuthContext } from "../providers/AuthProvider";
 
 const DetailsPage = () => {
     const data = useLoaderData();
     console.log(data);
+
+    const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const handleRequest = async () => {
+  try {
+    await axios.patch(`http://localhost:5000/request/${data._id}`, {}, {
+      headers: {
+        Authorization: `Bearer ${user?.accessToken}`,
+      },
+    });
+    navigate(`/request`); // ✅ navigate after request success
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+
     return (
         <div className="max-w-5xl mx-auto px-4 py-10">
       <div className="grid md:grid-cols-2 gap-8 bg-white rounded-2xl shadow-xl p-6">
@@ -51,11 +72,11 @@ const DetailsPage = () => {
           </div> */}
 
           {/* Request Button */}
-          <button
-            // onClick={handleRequest}
+       <button onClick={handleRequest}
+            
             className="btn btn-success mt-6 w-full rounded-full"
           >
-            Request This Food 🍽️
+            Request  Food 🍽️
           </button>
         </div>
       </div>

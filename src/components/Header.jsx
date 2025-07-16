@@ -26,6 +26,10 @@ const Header = () => {
       name: "My Foods",
       path: "/my-foods",
     },
+    {
+      name: "Food Request",
+      path: "/request",
+    },
   ];
   return (
     <nav className="overflow-x-clip">

@@ -1,34 +1,32 @@
-import animation from "../assets/cooking.json";
-
 import Lottie from "lottie-react";
+import animation from "../assets/cooking.json"; // ✅ Change to your food sharing Lottie file
+
 const Banner = () => {
   return (
-    <section
-      className="bg-contain bg-fixed"
-    >
-      
-      <div
-        id="banner"
-        className="flex min-h-screen bg-white bg-opacity-95 flex-col-reverse md:flex-row items-center justify-around "
-      >
-        <div className="text space-y-4  text-center md:text-start ">
-          <h1 className="text-5xl font-bold">
-            Basic <span className="text-orange-400"> Authentication </span>
-            Template,
+    <section className="bg-gradient-to-r from-green-100 to-green-200 min-h-screen flex items-center justify-center">
+      <div className="flex flex-col md:flex-row items-center justify-between w-11/12 mx-auto py-10">
+        {/* Left Text Section */}
+        <div className="space-y-6 text-center md:text-left max-w-xl">
+          <h1 className="text-5xl font-extrabold leading-tight text-green-800">
+            Share <span className="text-orange-500">Food</span>,  
+            Spread <span className="text-green-600">Love</span> ❤️
           </h1>
-          <div className=" max-w-[520px] md:rounded-full p-2 bg-orange-400 text-white">
-            <marquee direction="left">
-              Start your project the smart, simple way.
-            </marquee>
-          </div>
-
-          <h2 className="text-3xl">Build in a best way</h2>
-          <div className="buttons flex gap-3 justify-center md:justify-start">
-            <button className=" ">Join Now</button>
-            <button className=" ">See More</button>
+          <p className="text-lg text-gray-700">
+            Donate extra food to help others and reduce waste.  
+            Together we can fight hunger and create a better world.
+          </p>
+          <div className="flex flex-col md:flex-row gap-4 justify-center md:justify-start">
+            <button className="btn bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full shadow-lg">
+              Start Donating 🍲
+            </button>
+            <button className="btn bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full shadow-lg">
+              See Available Foods
+            </button>
           </div>
         </div>
-        <div className="max-w-[400px] ">
+
+        {/* Right Animation Section */}
+        <div className="max-w-md mt-10 md:mt-0">
           <Lottie animationData={animation} loop={true} />
         </div>
       </div>
