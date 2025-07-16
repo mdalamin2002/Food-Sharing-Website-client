@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
+import Swal from "sweetalert2";
 import { AuthContext } from "../providers/AuthProvider";
 
 const MyFoods = () => {
@@ -19,6 +20,28 @@ const MyFoods = () => {
                 });
         }
     }, [user]);
+
+    const handleDeleteFood = (id) => {
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Yes, delete it!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      axios
+        .delete(`http://localhost:5000/delete-food/${id}`)
+        .then((res) => {
+          if (res.data.deletedCount > 0) {
+            Swal.fire("Deleted!", "Your food has been deleted.", "success");
+          
+            setMyFoods(myFoods.filter((item) => item._id !== id));
+          }
+        });
+    }
+  });
+};
 
     return (
         <div className="max-w-7xl mx-auto px-4 py-10">
@@ -57,7 +80,7 @@ const MyFoods = () => {
                     <button className="btn btn-sm btn-info rounded-md">
                       Update
                     </button>
-                    <button className="btn btn-sm btn-error rounded-md">
+                    <button onClick={() => handleDeleteFood(food._id)} className="btn btn-sm btn-error rounded-md">
                       Delete
                     </button>
                   </td>
