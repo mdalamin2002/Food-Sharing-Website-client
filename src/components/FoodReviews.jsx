@@ -70,7 +70,7 @@ export default function FoodReviews() {
 
     setReviews((prev) => [formatted, ...prev]);
 
-    Swal.fire("ধন্যবাদ!", "আপনার অভিজ্ঞতা জমা হয়েছে।", "success");
+    Swal.fire("Submitted!", "Your review has been submitted.", "success");
 
     setNewReview({
       name: "",
