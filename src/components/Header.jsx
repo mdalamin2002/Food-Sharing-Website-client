@@ -51,7 +51,11 @@ const Header = () => {
                     src={user.photoURL}
                     alt={user.displayName}
                     className="w-full h-full object-cover"
+
+                    
                   />
+
+
                 ) : (
                   <span>{user.displayName?.charAt(0) || "U"}</span>
                 )}

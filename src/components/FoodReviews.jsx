@@ -87,7 +87,7 @@ export default function FoodReviews() {
     <section className="py-16 my-32 bg-green-50 text-green-900">
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-          Community <span className="text-orange-500">Stories</span>
+         Donation <span className="text-orange-500">Reviews</span>
         </h2>
 
         {/* Review Cards */}

@@ -1,4 +1,5 @@
 import Lottie from "lottie-react";
+import { Link } from "react-router";
 import animation from "../assets/cooking.json"; // ✅ Change to your food sharing Lottie file
 
 const Banner = () => {
@@ -16,12 +17,21 @@ const Banner = () => {
             Together we can fight hunger and create a better world.
           </p>
           <div className="flex flex-col md:flex-row gap-4 justify-center md:justify-start">
-            <button className="btn bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full shadow-lg">
+
+            <Link to={"/add-food"}>
+             <button className="btn bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full shadow-lg">
               Start Donating 🍲
             </button>
-            <button className="btn bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full shadow-lg">
+            
+            </Link>
+            
+            <Link to={"/available-foods"}>
+             <button className="btn bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full shadow-lg">
               See Available Foods
             </button>
+            
+            </Link>
+           
           </div>
         </div>
 
