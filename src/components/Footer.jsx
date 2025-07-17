@@ -1,5 +1,6 @@
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import { Link } from "react-router";
+import Swal from "sweetalert2";
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -10,7 +11,8 @@ const Footer = () => {
     // TODO: send email to newsletter endpoint or service
     // e.g., axios.post("/newsletter", { email })
     e.target.reset();
-    alert("Thanks for subscribing!"); // replace with toast if using react-hot-toast
+     // replace with toast if using react-hot-toast
+    Swal.fire("Thanks for subscribing!");
   };
 
   return (

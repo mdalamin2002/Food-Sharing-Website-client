@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useContext } from "react";
 import { useLoaderData, useNavigate } from "react-router";
+import Swal from "sweetalert2";
 import { AuthContext } from "../providers/AuthProvider";
 
 const DetailsPage = () => {
@@ -17,7 +18,16 @@ const DetailsPage = () => {
         Authorization: `Bearer ${user?.accessToken}`,
       },
     });
-    navigate(`/request`); // ✅ navigate after request success
+    //sweet alert2
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Request Sent Successfully",
+      showConfirmButton: false,
+      timer: 1500,
+    })
+    navigate(`/request`); 
+    // ✅ navigate after request success
   } catch (error) {
     console.error(error);
   }

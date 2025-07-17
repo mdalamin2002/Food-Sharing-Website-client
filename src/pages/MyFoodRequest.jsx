@@ -3,11 +3,12 @@ import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import { AuthContext } from "../providers/AuthProvider";
+import Loading from "./Loading";
 
 const MyFoodRequests = () => {
   const { user } = useContext(AuthContext);
   const [requests, setRequests] = useState([]);
-  console.log(requests);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (user?.email) {
@@ -15,6 +16,7 @@ const MyFoodRequests = () => {
         .get(`http://localhost:5000/my-requests?email=${user.email}`)
         .then((res) => setRequests(res.data))
         .catch((err) => console.error(err));
+      setLoading(false);
     }
   }, [user]);
 
@@ -40,8 +42,15 @@ const MyFoodRequests = () => {
             toast.error("Failed to delete request!");
           });
       }
+
     });
+
+
   };
+
+  if (loading) {
+    return <Loading></Loading>;
+  }
 
   return (
     <div className="max-w-6xl mx-auto p-6">

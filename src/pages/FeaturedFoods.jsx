@@ -2,16 +2,19 @@ import { motion } from "framer-motion";
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../providers/AuthProvider";
+import Loading from "./Loading";
 
 const FeaturedFoods = () => {
   const [foods, setFoods] = useState([]);
   const { user } = useContext(AuthContext);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:5000/featured-foods")
       .then((res) => res.json())
       .then((data) => setFoods(data));
+    setLoading(false);
   }, []);
 
   const handleDetails = (id) => {
@@ -21,6 +24,8 @@ const FeaturedFoods = () => {
       navigate(`/details/${id}`);
     }
   };
+
+  if (loading) return <Loading />;
 
   return (
     <section className="py-10 max-w-7xl mx-auto px-4">

@@ -1,9 +1,14 @@
 import axios from "axios";
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router";
+import Swal from "sweetalert2";
 import { AuthContext } from "../providers/AuthProvider";
+import Loading from "./Loading";
 const AddFood = () => {
   const { user } = useContext(AuthContext); 
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleAddFood = async (e) => {
     e.preventDefault();
@@ -30,34 +35,32 @@ const AddFood = () => {
       donorImage: user?.photoURL,
       createdAt: new Date(),
     };
-    console.log(newFood);
-    axios.post("http://localhost:5000/add-food", newFood).then((res) => {
-      console.log(res.data);
+    
 
-    })
+    try {
+      await axios.post("http://localhost:5000/add-food", newFood);
+    
+      Swal.fire({
+        icon: "success",
+        title: "Food Added Successfully!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    
+      navigate("/my-foods");
+    } catch (error) {
+      console.error(error);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Failed to add food. Try again!",
+      });
+    }
 
-    // try {
-    //   const res = await fetch("https://your-server-url.com/foods", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       authorization: `Bearer ${localStorage.getItem("access-token")}`,
-    //     },
-    //     body: JSON.stringify(newFood),
-    //   });
-
-    //   const data = await res.json();
-    //   if (data.insertedId) {
-    //     toast.success("Food added successfully!");
-    //     form.reset();
-    //   }
-    // } catch (err) {
-    //   console.error(err);
-    //   toast.error("Something went wrong!");
-    // } finally {
-    //   setLoading(false);
-    // }
+    setLoading(false);
   };
+
+   if(loading) return <Loading></Loading>
 
   return (
     <div className="max-w-4xl mx-auto my-10 bg-white p-10 rounded-2xl shadow-xl border border-gray-200">
@@ -109,8 +112,8 @@ const AddFood = () => {
 
         {/* Submit Button */}
         <div className="md:col-span-2 text-center">
-          <button type="submit" disabled={loading} className="btn btn-success px-8">
-            {loading ? "Adding..." : "Add Food"}
+          <button type="submit" className="btn btn-success px-8">
+            Add Food
           </button>
         </div>
       </form>
