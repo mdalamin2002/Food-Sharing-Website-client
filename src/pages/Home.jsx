@@ -1,5 +1,6 @@
 import Banner from "../components/Banner";
 import Footer from "../components/Footer";
+import HowItWorks from "../components/HowItWorks";
 import FeaturedFoods from "./FeaturedFoods";
 
 const Home = () => {
@@ -7,6 +8,8 @@ const Home = () => {
     <>
       <Banner></Banner>
       <FeaturedFoods></FeaturedFoods>
+
+      <HowItWorks></HowItWorks>
 
       <Footer></Footer>
     </>
