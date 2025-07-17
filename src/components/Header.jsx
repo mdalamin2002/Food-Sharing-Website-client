@@ -19,11 +19,7 @@ const Header = () => {
 
   return (
     <nav className="overflow-x-clip">
-      {user && (
-        <p className="text-center text-white bg-black py-2 bg-opacity-90">
-           Welcome {user?.displayName}! 🎉 Ready to share or enjoy delicious meals today? 🍲✨
-        </p>
-      )}
+     
       <div className="w-11/12 mx-auto py-5 flex justify-between items-center relative">
         <Link to="/" className="logo">
           <span className="text-xl font-bold text-stone-700">Food Sharing</span>
@@ -43,6 +39,10 @@ const Header = () => {
               <button className="cursor-pointer" onClick={logOut}>
                 Logout
               </button>
+
+        <p className="text-center text-lg font-semibold text-white bg-gradient-to-r from-green-500 to-green-700 py-2 px-2 rounded-xl shadow-md mx-auto max-w-sm">
+  <span className="font-bold">{user?.displayName }</span>!
+</p>
 
               {/* Profile Image */}
               <div className="w-8 h-8 rounded-full overflow-hidden bg-orange-100 text-orange-700 flex items-center justify-center font-bold text-xs">

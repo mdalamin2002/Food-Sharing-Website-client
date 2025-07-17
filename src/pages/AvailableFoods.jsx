@@ -1,15 +1,50 @@
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router";
 
 const AvailableFoods = () => {
-  const [foods, setFoods] = useState([]);
+  const [search, setSearch] = useState("");
+  const [isThreeCol, setIsThreeCol] = useState(true);
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:5000/available-foods")
-      .then((res) => setFoods(res.data));
-  }, []);
+  // ✅ Fetch that uses search param
+  const fetchFoods = async () => {
+    const res = await axios.get(
+      `http://localhost:5000/available-foods?search=${encodeURIComponent(search)}`
+    );
+    return res.data;
+  };
+
+  // ✅ TanStack Query
+  const {
+    data: foods = [],
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: ["availableFoods", search], // refetch on search
+    queryFn: fetchFoods,
+    keepPreviousData: true,
+  });
+
+  // 🔁 remove old useEffect fetch — no longer needed!
+
+  if (isLoading) {
+    return (
+      <div className="max-w-7xl mx-auto px-4 py-20 text-center">
+        <span className="loading loading-spinner loading-lg text-success" />
+        <p className="mt-2 text-gray-500">Loading foods...</p>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="max-w-7xl mx-auto px-4 py-20 text-center text-red-600">
+        Failed to load foods: {error?.message || "Something went wrong."}
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-10">
@@ -17,10 +52,32 @@ const AvailableFoods = () => {
         🍲 Available Foods
       </h1>
 
+      {/* ✅ Search & Layout Toggle */}
+      <div className="flex justify-between items-center mb-6 gap-4">
+        <input
+          type="text"
+          name="search"                       // ✅ input name
+          placeholder="Search by food name..."
+          className="input input-bordered w-full max-w-xs"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <button
+          onClick={() => setIsThreeCol(!isThreeCol)}
+          className="btn btn-outline btn-success"
+        >
+          {isThreeCol ? "2-Column Layout" : "3-Column Layout"}
+        </button>
+      </div>
+
       {foods.length === 0 ? (
         <p className="text-center text-gray-500">No available food found.</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div
+          className={`grid grid-cols-1 sm:grid-cols-2 ${
+            isThreeCol ? "md:grid-cols-3" : "md:grid-cols-2"
+          } gap-6`}
+        >
           {foods.map((food) => (
             <div
               key={food._id}
@@ -33,27 +90,13 @@ const AvailableFoods = () => {
               />
 
               <div className="p-5 space-y-2">
-                {/* <div className="flex items-center gap-3 mb-3">
-                  <img
-                    src={food.donorImage}
-                    alt="donor"
-                    className="w-10 h-10 rounded-full border-2 border-green-500"
-                  />
-                  <div>
-                    <p className="text-sm font-semibold text-gray-700">
-                      {food.donorName}
-                    </p>
-                    <p className="text-xs text-gray-400">Donor</p>
-                  </div>
-                </div>
-
+                {/* ✅ Food Name (You asked to add) */}
                 <h2 className="text-xl font-bold text-green-700">
                   {food.foodName}
-                </h2> */}
+                </h2>
 
                 <p className="text-sm text-gray-600">
-                  <span className="font-medium">Quantity:</span>{" "}
-                  {food.quantity}
+                  <span className="font-medium">Quantity:</span> {food.quantity}
                 </p>
                 <p className="text-sm text-gray-600">
                   <span className="font-medium">Pickup:</span>{" "}
