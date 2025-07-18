@@ -31,7 +31,7 @@ const MyFoods = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`https://mission-scic11-server-template.vercel.app//delete-food/${id}`).then((res) => {
+        axios.delete(`https://mission-scic11-server-template.vercel.app/delete-food/${id}`).then((res) => {
           if (res.data.deletedCount > 0) {
             Swal.fire("Deleted!", "Your food has been deleted.", "success");
 
