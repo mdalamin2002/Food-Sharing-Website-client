@@ -6,14 +6,14 @@ import { AuthContext } from "../providers/AuthProvider";
 
 const DetailsPage = () => {
     const data = useLoaderData();
-    console.log(data);
+    // console.log(data);
 
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleRequest = async () => {
   try {
-    await axios.patch(`http://localhost:5000/request/${data._id}`, {}, {
+    await axios.patch(`https://mission-scic11-server-template.vercel.app/request/${data._id}`, {}, {
       headers: {
         Authorization: `Bearer ${user?.accessToken}`,
       },

@@ -38,7 +38,7 @@ const AddFood = () => {
     
 
     try {
-      await axios.post("http://localhost:5000/add-food", newFood);
+      await axios.post("https://mission-scic11-server-template.vercel.app/add-food", newFood);
     
       Swal.fire({
         icon: "success",

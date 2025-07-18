@@ -11,7 +11,7 @@ const FeaturedFoods = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/featured-foods")
+    fetch("https://mission-scic11-server-template.vercel.app/featured-foods")
       .then((res) => res.json())
       .then((data) => setFoods(data));
     setLoading(false);

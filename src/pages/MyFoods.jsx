@@ -11,7 +11,7 @@ const MyFoods = () => {
   useEffect(() => {
     if (user) {
       axios
-        .get("http://localhost:5000/my-foods", {
+        .get("https://mission-scic11-server-template.vercel.app/my-foods", {
           headers: {
             Authorization: `Bearer ${user.accessToken}`,
           },
@@ -31,7 +31,7 @@ const MyFoods = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:5000/delete-food/${id}`).then((res) => {
+        axios.delete(`https://mission-scic11-server-template.vercel.app//delete-food/${id}`).then((res) => {
           if (res.data.deletedCount > 0) {
             Swal.fire("Deleted!", "Your food has been deleted.", "success");
 

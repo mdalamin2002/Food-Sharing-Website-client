@@ -10,7 +10,7 @@ const AvailableFoods = () => {
   // ✅ Fetch that uses search param
   const fetchFoods = async () => {
     const res = await axios.get(
-      `http://localhost:5000/available-foods?search=${encodeURIComponent(search)}`
+      `https://mission-scic11-server-template.vercel.app/available-foods?search=${encodeURIComponent(search)}`
     );
     return res.data;
   };

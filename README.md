@@ -1,12 +1,86 @@
-# React + Vite
+# 🍲 Food Sharing Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web application that allows users to **share surplus food** and help reduce food waste. Users can donate food, browse available food items, and request food.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Repository\*\*
 
-## Expanding the ESLint configuration
+live Link: https://foodshareforpoor.netlify.app/
+client Link: https://github.com/mdalamin2002/Food-Sharing-Website-client
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Server Link: https://github.com/mdalamin2002/Food-Sharing-Website-server
+
+✅ **Authentication System**
+
+- Firebase Authentication (Email/Password, Google Sign-in)
+- Protected Routes using PrivateRoute
+
+✅ **Food Management**
+
+- Add, Update, Delete food items (only by the donor)
+- View all available foods
+
+✅ **Dynamic Layout & Search**
+
+- Switch between **2-column** and **3-column** layouts
+- **Search foods by name** (Server-side filtering)
+
+✅ **Modern UI**
+
+- Responsive design using **Tailwind CSS** & **DaisyUI**
+- **Lottie animation** for loading states
+
+✅ **TanStack Query Integration**
+
+- Optimized data fetching and caching
+- Mutation for food addition and updates
+
+✅ **Toast & Alerts**
+
+- SweetAlert2 for user confirmations
+- React Hot Toast for notifications
+
+---
+
+## 🛠 Tech Stack
+
+**Frontend:**
+
+- React (Vite)
+- Tailwind CSS + DaisyUI
+- React Router (v7)
+- TanStack React Query
+- Lottie Animation
+
+**Backend:**
+
+- Node.js, Express.js
+- MongoDB Database
+
+**Other Tools:**
+
+- Firebase Authentication
+- Axios for API calls
+
+## 📚 Available Pages
+
+- **Home Page** – Overview & Featured Foods
+- **Available Foods** – Browse food, search, filter
+- **Add Food** – Donors can add new food items
+- **My Foods** – Manage donated foods
+- **Food Request** – Track requested items
+- **Authentication** – Login & Registration
+
+---
+
+## 🔒 Authentication Flow
+
+- **Not Logged In:** Can only see Home & Available Foods, must login to donate/request
+- **Logged In:** Full access, including Add Food, My Foods, My Requests
+
+---
+
+## 👨‍💻 Author
+
+Developed by **\[MD AL AMIN]**

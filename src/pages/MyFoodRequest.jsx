@@ -13,7 +13,7 @@ const MyFoodRequests = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`http://localhost:5000/my-requests?email=${user.email}`)
+        .get(`https://mission-scic11-server-template.vercel.app/my-requests?email=${user.email}`)
         .then((res) => setRequests(res.data))
         .catch((err) => console.error(err));
       setLoading(false);
@@ -33,7 +33,7 @@ const MyFoodRequests = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/delete-request/${id}`)
+          .delete(`https://mission-scic11-server-template.vercel.app/delete-request/${id}`)
           .then(() => {
             setRequests((prev) => prev.filter((req) => req._id !== id));
             toast.success("Request deleted successfully!");

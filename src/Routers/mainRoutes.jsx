@@ -55,7 +55,7 @@ const mainRoutes = createBrowserRouter([
         path: "/update-food/:id",
         element: <UpdateFood></UpdateFood>,
           loader: async ({ params }) => {
-           const {data} = await axios.get(`http://localhost:5000/details/${params.id}`);
+           const {data} = await axios.get(`https://mission-scic11-server-template.vercel.app/details/${params.id}`);
         return data
         }
         
@@ -65,7 +65,7 @@ const mainRoutes = createBrowserRouter([
         path: "/details/:foodId",
         element: <DetailsPage></DetailsPage>,
         loader: async ({ params }) => {
-           const {data} = await axios.get(`http://localhost:5000/details/${params.foodId}`);
+           const {data} = await axios.get(`https://mission-scic11-server-template.vercel.app/details/${params.foodId}`);
         return data
         }
          

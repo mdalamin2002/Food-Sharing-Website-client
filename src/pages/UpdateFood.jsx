@@ -20,7 +20,7 @@ const UpdateFood = () => {
     };
 
     axios
-      .put(`http://localhost:5000/update-food/${food._id}`, updatedFood)
+      .put(`https://mission-scic11-server-template.vercel.app/update-food/${food._id}`, updatedFood)
       .then((res) => {
         if (res.data.modifiedCount > 0) {
           toast.success("Food updated successfully!");
