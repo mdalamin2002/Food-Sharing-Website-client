@@ -2,7 +2,7 @@ import Lottie from "lottie-react";
 import { useContext, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { BiEnvelope, BiImageAdd, BiKey, BiUser } from "react-icons/bi";
-import { Link, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router"; // ✅ useNavigate from react-router-dom
 import Swal from "sweetalert2";
 import happy from "../assets/happy.json";
 import Social from "../components/Social";
@@ -46,10 +46,16 @@ const Register = () => {
     }
 
     try {
+      // ✅ Create Firebase user
       const res = await createUser(email, pass);
+
+      // ✅ Update displayName and photoURL
       await updateUser({ displayName: name, photoURL: image });
+
+      // ✅ Sync in context
       setUser({ ...res.user, displayName: name, photoURL: image });
 
+      // ✅ SweetAlert success
       Swal.fire({
         title: "Registration Successful!",
         text: "Welcome to Food Sharing Platform",
@@ -58,7 +64,9 @@ const Register = () => {
       });
 
       toast.success("Registration successful!");
-      navigate("/");
+
+      // ✅ Navigate to home after success
+      navigate("/", { replace: true });
     } catch (error) {
       toast.error(error.message);
     } finally {
@@ -67,9 +75,9 @@ const Register = () => {
   };
 
   return (
-    <div className=" bg-[url(/bg.png)] bg-contain">
+    <div className="bg-[url(/bg.png)] bg-contain">
       <Toaster />
-      <div className=" bg-white bg-opacity-90 min-h-screen">
+      <div className="bg-white bg-opacity-90 min-h-screen">
         <div className="w-11/12 mx-auto py-10">
           <div className="title mt-5">
             <Title>Join with Us</Title>
