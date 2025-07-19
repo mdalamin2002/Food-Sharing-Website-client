@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createBrowserRouter } from "react-router";
+import Nofound from "../components/Nofound";
 import RootLayout from "../layouts/RootLayout";
 import AddFood from "../pages/AddFood";
 import AvailableFoods from "../pages/AvailableFoods";
@@ -82,6 +83,10 @@ const mainRoutes = createBrowserRouter([
       },
       {},
     ],
+  },
+   {
+    path: "/*",
+    Component: Nofound,
   },
 ]);
 
