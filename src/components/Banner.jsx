@@ -8,10 +8,9 @@ const Banner = () => {
       <div className="flex flex-col md:flex-row items-center justify-between w-11/12 mx-auto py-10">
         {/* Left Text Section */}
         <div className="space-y-6 text-center md:text-left max-w-xl">
-          <h1 className="text-5xl font-extrabold leading-tight text-green-800">
-            Share <span className="text-orange-500">Food</span>,  
-            Spread <span className="text-green-600">Love</span> ❤️
-          </h1>
+         <h1 className="text-5xl font-extrabold leading-tight text-green-700">
+  Share Food, Spread Love ❤️
+</h1>
           <p className="text-lg text-gray-700">
             Donate extra food to help others and reduce waste.  
             Together we can fight hunger and create a better world.

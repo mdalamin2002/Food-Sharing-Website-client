@@ -20,9 +20,10 @@ const HowItWorks = () => {
   return (
     <section className="bg-green-50 py-16">
       <div className="max-w-7xl mx-auto text-center px-4">
-        <h2 className="text-4xl font-bold mb-10">
-          How <span className="text-orange-500">It Works</span>
-        </h2>
+        <h2 className="text-4xl font-bold mb-10 text-green-700">
+  How It Works
+</h2>
+
         <div className="grid md:grid-cols-3 gap-10">
           {steps.map((step, index) => (
             <div

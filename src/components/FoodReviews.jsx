@@ -86,9 +86,9 @@ export default function FoodReviews() {
   return (
     <section className="py-16 my-32 bg-green-50 text-green-900">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-         Donation <span className="text-orange-500">Reviews</span>
-        </h2>
+       <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-green-700">
+  Donation Reviews
+</h2>
 
         {/* Review Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
