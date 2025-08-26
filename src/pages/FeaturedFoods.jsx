@@ -63,12 +63,12 @@ const FeaturedFoods = () => {
       </div>
 
       <div className="text-center mt-6">
-        <Link to="/available-foods">
-          <button className="btn btn-success btn-wide rounded-full">
-            Show All Foods 🍽️
-          </button>
-        </Link>
-      </div>
+  <Link to="/available-foods">
+    <button className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded-full transition">
+      Show All Foods 🍽️
+    </button>
+  </Link>
+</div>
     </section>
   );
 };

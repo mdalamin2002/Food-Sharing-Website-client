@@ -180,20 +180,26 @@ export default function FoodReviews() {
             </select>
           </div>
 
-          <button type="submit" className="btn btn-primary w-full">
-            Submit Review
-          </button>
+          <div className="flex justify-center mt-6">
+  <button
+    type="submit"
+    className="bg-orange-600 hover:bg-orange-700 text-white font-semibold py-2 px-6 rounded-full transition"
+  >
+    Submit Review
+  </button>
+</div>
         </form>
 
         {/* Show All / Show Less */}
-        <div className="text-center">
-          <button
-            onClick={() => setShowAll(!showAll)}
-            className="btn btn-outline btn-secondary"
-          >
-            {showAll ? "Show Less" : "Show All Reviews"}
-          </button>
-        </div>
+       <div className="text-center mt-6">
+  <button
+    onClick={() => setShowAll(!showAll)}
+    className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-6 rounded-full transition"
+  >
+    {showAll ? "Show Less" : "Show All Reviews"}
+  </button>
+</div>
+
       </div>
     </section>
   );

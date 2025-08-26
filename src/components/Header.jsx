@@ -45,7 +45,7 @@ const Header = () => {
             <>
               <button
                 onClick={logOut}
-                className="px-4 py-1 rounded-lg bg-red-500 text-white hover:bg-red-600 transition shadow-md"
+                className="px-4 py-1 rounded-lg bg-orange-500 text-white hover:bg-orange-600 transition shadow-md"
               >
                 Logout
               </button>
@@ -128,7 +128,7 @@ const Header = () => {
         {user?.email ? (
           <button
             onClick={logOut}
-            className="px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-red-600 transition shadow-md w-fit"
+            className="px-4 py-2 rounded-lg bg-orange-500 text-white hover:bg-orange-600 transition shadow-md w-fit"
           >
             Logout
           </button>
