@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CgMenuMotion } from "react-icons/cg";
 import { RiMenuAddLine } from "react-icons/ri";
 import { Link, NavLink } from "react-router"; // FIX: react-router-dom
@@ -8,6 +8,17 @@ const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isPageLoad, setIsPageLoad] = useState(false);
+  const [hasNotifications, setHasNotifications] = useState(false);
+
+  useEffect(() => {
+    // In a real implementation, this would check for actual notifications
+    // For now, we'll just set it to true if user is logged in
+    if (user?.email) {
+      setHasNotifications(true);
+    } else {
+      setHasNotifications(false);
+    }
+  }, [user]);
 
   const menu = [
     { name: "Home", path: "/" },
@@ -15,6 +26,8 @@ const Header = () => {
     { name: "Available Foods", path: "/available-foods" },
     { name: "My Foods", path: "/my-foods" },
     { name: "Food Request", path: "/request" },
+    { name: "Profile", path: "/profile" },
+    { name: "Notifications", path: "/notifications" },
   ];
 
   return (
@@ -32,12 +45,15 @@ const Header = () => {
               key={item.path}
               to={item.path}
               className={({ isActive }) =>
-                `hover:text-orange-500 transition ${
+                `hover:text-orange-500 transition flex items-center ${
                   isActive ? "text-orange-600 font-semibold" : ""
                 }`
               }
             >
               {item.name}
+              {item.name === "Notifications" && hasNotifications && (
+                <span className="ml-2 w-2 h-2 bg-red-500 rounded-full"></span>
+              )}
             </NavLink>
           ))}
 
@@ -119,9 +135,12 @@ const Header = () => {
           <NavLink
             key={item.path}
             to={item.path}
-            className="border-b pb-2 hover:text-orange-500 transition"
+            className="border-b pb-2 hover:text-orange-500 transition flex items-center"
           >
             {item.name}
+            {item.name === "Notifications" && hasNotifications && (
+              <span className="ml-2 w-2 h-2 bg-red-500 rounded-full"></span>
+            )}
           </NavLink>
         ))}
 

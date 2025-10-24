@@ -10,6 +10,8 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import MyFoodRequest from "../pages/MyFoodRequest";
 import MyFoods from "../pages/MyFoods";
+import Notifications from "../pages/Notifications";
+import Profile from "../pages/Profile";
 import Register from "../pages/Register";
 import UpdateFood from "../pages/UpdateFood";
 import PrivateRoute from "./PrivateRoute";
@@ -81,7 +83,22 @@ const mainRoutes = createBrowserRouter([
         path: "registration",
         element: <Register></Register>,
       },
-      {},
+      {
+        path: "/profile",
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/notifications",
+        element: (
+          <PrivateRoute>
+            <Notifications />
+          </PrivateRoute>
+        ),
+      },
     ],
   },
    {
