@@ -9,6 +9,8 @@ const Notifications = () => {
   const [newPreference, setNewPreference] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(false);
 
+  const API_BASE_URL = "https://assignment-11-server-wine.vercel.app"; 
+
   useEffect(() => {
     if (user?.email) {
       fetchPreferences();
@@ -18,7 +20,7 @@ const Notifications = () => {
   const fetchPreferences = async () => {
     try {
       const response = await axios.get(
-        `https://assigenment-11-server-wine.vercel.app/notifications/preferences/${user.email}`
+        `${API_BASE_URL}/notifications/preferences/${user.email}`
       );
       if (response.data.foodPreferences) {
         setPreferences(response.data.foodPreferences);

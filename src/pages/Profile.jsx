@@ -14,6 +14,7 @@ const Profile = () => {
     photoURL: "",
   });
   const [isEditing, setIsEditing] = useState(false);
+  const API_BASE_URL = "https://assignment-11-server-wine.vercel.app"; 
 
   useEffect(() => {
     if (user) {
@@ -24,7 +25,7 @@ const Profile = () => {
   const fetchProfile = async () => {
     try {
       const response = await axios.get(
-        `https://assigenment-11-server-wine.vercel.app/profile/${user.email}`
+        `${API_BASE_URL}/profile/${user.email}`
       );
       
       // The server now returns a default profile structure even if it doesn't exist
@@ -57,7 +58,7 @@ const Profile = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://assigenment-11-server-wine.vercel.app/profile",
+        `${API_BASE_URL}/profile`,
         profile
       );
       if (response.data.success) {

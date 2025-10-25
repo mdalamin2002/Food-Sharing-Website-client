@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { CgMenuMotion } from "react-icons/cg";
 import { RiMenuAddLine } from "react-icons/ri";
-import { Link, NavLink } from "react-router"; // FIX: react-router-dom
+import { Link, NavLink } from "react-router";
 import { AuthContext } from "../providers/AuthProvider";
 
 const Header = () => {
